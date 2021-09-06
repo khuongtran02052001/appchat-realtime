@@ -6,13 +6,12 @@ import styled from 'styled-components'
 
 
 const SlidebarStyled = styled.div`
-    background: #9e82df;
-    color : white;
+    background: #bd96bd;
+    color : black;
     height : 100vh;
 `
 
 export default function Slidebar() {
-
 
 
     return (

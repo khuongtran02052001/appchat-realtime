@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { auth, db } from '../../firebae/config'
 import { AuthContext } from '../../context/AuthProvider'
+import { useHistory } from 'react-router-dom'
 const WrapperStyled = styled.div`
     display:flex;
     justify-content:space-between;
@@ -16,11 +17,11 @@ const WrapperStyled = styled.div`
 `
 
 export default function Userinfo() {
-
+    const history = useHistory()
     const { user: {
         displayName, photoURL
     } } = React.useContext(AuthContext)
- 
+
 
     return (
         <WrapperStyled>
@@ -28,7 +29,7 @@ export default function Userinfo() {
                 <Avatar src={photoURL}>{photoURL ? '' : displayName?.charAt(0)?.toUpperCase()}</Avatar>
                 <Typography.Text className='Username'>{displayName}</Typography.Text>
             </div>
-            <Button ghost onClick={() => auth.signOut()}> Đăng Xuất</Button>
+            <Button ghost onClick={() => { auth.signOut(); history.push('/login') }}> Đăng Xuất</Button>
         </WrapperStyled>
     )
 }
